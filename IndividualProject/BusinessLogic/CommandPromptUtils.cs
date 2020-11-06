@@ -7,9 +7,9 @@ using IndividualProject.Models;
 
 namespace IndividualProject.BusinessLogic
 {
-    class CommandPromptUtils
+    class CommandPromptUtils //methods pou mas vohthane na sulleksoume stoixeia mesw cmd
     {
-        public Trainer GetTrainerDetails(List<string> subjects = null)
+        public Trainer GetTrainerDetails(List<string> subjects=null)
         {
             if (subjects == null) subjects = new List<string>() { "C#", "Java", "Python", "JavaScript", "PHP" };
             Trainer trainer   = new Trainer();
@@ -19,21 +19,26 @@ namespace IndividualProject.BusinessLogic
             return (trainer);
         }
 
-        public Course GetCourseDetails(List<string> subjects = null)
-        {
-            Course course = new Course();
-
-            return (course);
-        }
         public Student GetStudentDetails()
         {
             Student student = new Student();
             student.FirstName = AskDetail("Student, give me your first name:");
             student.LastName = AskDetail("Student, give me your last name:");
-            student.DateOfBirth = AskDetail("Student, give me your date of birth:");
-            student.TuitionFee = AskDetail("Student, what is your tuition fee?");
+            student.DateOfBirth = Convert.ToDateTime(AskDetail("Student, give me your date of birth:"));
+            student.TuitionFee = Convert.ToDouble(AskDetail("Student, what is your tuition fee?"));
 
             return (student);
+        }
+        public Course GetCourseDetails()
+        {
+            Course course = new Course();
+            course.Title = AskDetail("What is the title of the course?");
+            course.Stream = AskDetail("What is the stream of the course");
+            course.Type = AskDetail("What is the type of the course");
+            course.StartDate = Convert.ToDateTime(AskDetail("What is the Start Date of the course"));
+            course.EndDate = Convert.ToDateTime(AskDetail("What is the End Date of the course"));
+
+            return (course);
         }
 
         public Asignment GetAsignmentDetails(List<string> subjects = null)
@@ -43,7 +48,7 @@ namespace IndividualProject.BusinessLogic
             return (asignment);
         }
 
-        private string AskDetail(string message, List<string> subjects = null, DateTime? dateofbirth=null, double? tuitionfee = null)//stis parametrous mporw na valw default times, edw evala null giati thelw mono gia to subject na mpei se lista kai oxi sta alla, vazw dhladh null gia na mhn mou xtuphsei se auta pou den einai subject
+        private string AskDetail(string message, List<string> subjects = null)//stis parametrous mporw na valw default times, edw evala null giati thelw mono gia to subject na mpei se lista kai oxi sta alla, vazw dhladh null gia na mhn mou xtuphsei se auta pou den einai subject
         {
             string result = "";
             Console.Write(message);
@@ -56,15 +61,7 @@ namespace IndividualProject.BusinessLogic
             {
                 result = Console.ReadLine();
             }
-            if(dateofbirth != null)
-            {
-
-
-            }
-
-
-
-
+           
             return (result);
         }
 
@@ -91,6 +88,13 @@ namespace IndividualProject.BusinessLogic
         public void PrintStudentsList(List<Student> students)
         {
             foreach (var item in students)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        public void PrintCoursesList(List<Course> courses)
+        {
+            foreach (var item in courses)
             {
                 Console.WriteLine(item);
             }

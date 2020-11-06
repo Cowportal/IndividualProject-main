@@ -14,14 +14,42 @@ namespace IndividualProject
         {
             CommandPromptUtils cpUtils = new CommandPromptUtils();
             List<Trainer> trainers = new List<Trainer>();
-            trainers.Add(cpUtils.GetTrainerDetails());
+            //Ask number of trainers
+            Console.WriteLine("Give me number of trainers");
+            int x = Convert.ToInt32(Console.ReadLine());
+            //Loop for each trainer
+            for (int i = 1; i <= x; i++)
+            {
+                Console.WriteLine("*****Teacher number: "+i+"*****");
+                trainers.Add(cpUtils.GetTrainerDetails());
+                
+            }
+
             cpUtils.PrintTrainersList(trainers);
 
             List<Student> students = new List<Student>();
-            students.Add(cpUtils.GetStudentDetails());
+            //Ask number of students
+            Console.WriteLine("Give me number of students");
+            int y = Convert.ToInt32(Console.ReadLine());
+            //Loop for each student
+            for (int i = 1; i <= y; i++)
+            {
+                Console.WriteLine("*****Student number: " + i + "*****");
+                students.Add(cpUtils.GetStudentDetails());
+            }
             cpUtils.PrintStudentsList(students);
 
-           
+            List<Course> courses = new List<Course>();
+            //Ask number of courses
+            Console.WriteLine("Give me number of courses");
+            int z = Convert.ToInt32(Console.ReadLine());
+            //Loop for each course
+            for (int i = 1; i <= z; i++)
+            {
+                Console.WriteLine("*****course number: " + i + "*****");
+                courses.Add(cpUtils.GetCourseDetails());
+            }
+            cpUtils.PrintCoursesList(courses);
 
         }
 
