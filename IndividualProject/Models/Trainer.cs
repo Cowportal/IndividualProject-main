@@ -10,7 +10,7 @@ namespace IndividualProject.Models//ta modela kalo einai na MHN periexoun busine
     {
         private string _firstname;   //katw pavla sto ksekinhma gia fields (e.g _firstname)!!
         private string _lastname;
-        private string _subject;
+        private string _subject; //must 
 
         public string FirstName 
         { 
@@ -30,14 +30,11 @@ namespace IndividualProject.Models//ta modela kalo einai na MHN periexoun busine
             set { this._subject = value.ToUpper(); }
         }
 
-        public override bool Equals(object obj)
+        public Trainer()
         {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
+            this._firstname = "JohnDoe";
+            this._lastname = "JohnDoe";
+            this._subject = "xSubject";
         }
 
         public override string ToString()

@@ -12,7 +12,13 @@ namespace IndividualProject
     {
         static void Main(string[] args)
         {
-            CommandPromptUtils cpUtils = new CommandPromptUtils();
+
+            CommandPromptUtilsTrainer cpUtils1 = new CommandPromptUtilsTrainer();
+            CommandPromptUtilsStudent cpUtils2 = new CommandPromptUtilsStudent();
+            CommandPromptUtilsCourse cpUtils3 = new CommandPromptUtilsCourse();
+            CommandPromptUtilsAssignment cpUtils4 = new CommandPromptUtilsAssignment();
+
+            
             List<Trainer> trainers = new List<Trainer>();
             //Ask number of trainers
             Console.WriteLine("Give me number of trainers");
@@ -20,12 +26,12 @@ namespace IndividualProject
             //Loop for each trainer
             for (int i = 1; i <= x; i++)
             {
-                Console.WriteLine("*****Teacher number: "+i+"*****");
-                trainers.Add(cpUtils.GetTrainerDetails());
+                Console.WriteLine($"*****Teacher number:{i}*****");
+                trainers.Add(cpUtils1.GetTrainerDetails());
                 
             }
 
-            cpUtils.PrintTrainersList(trainers);
+            cpUtils1.PrintTrainersList(trainers);
 
             List<Student> students = new List<Student>();
             //Ask number of students
@@ -34,10 +40,10 @@ namespace IndividualProject
             //Loop for each student
             for (int i = 1; i <= y; i++)
             {
-                Console.WriteLine("*****Student number: " + i + "*****");
-                students.Add(cpUtils.GetStudentDetails());
+                Console.WriteLine($"*****Student number:{i}*****");
+                students.Add(cpUtils2.GetStudentDetails());
             }
-            cpUtils.PrintStudentsList(students);
+            cpUtils2.PrintStudentsList(students);
 
             List<Course> courses = new List<Course>();
             //Ask number of courses
@@ -46,10 +52,23 @@ namespace IndividualProject
             //Loop for each course
             for (int i = 1; i <= z; i++)
             {
-                Console.WriteLine("*****course number: " + i + "*****");
-                courses.Add(cpUtils.GetCourseDetails());
+                Console.WriteLine($"*****Course number:{i}*****");
+                courses.Add(cpUtils3.GetCourseDetails());
             }
-            cpUtils.PrintCoursesList(courses);
+            cpUtils3.PrintCoursesList(courses);
+
+            List<Assignment> assignments = new List<Assignment>();
+            //Ask number of assignments
+            Console.WriteLine("Give me number of assignments");
+            int q = Convert.ToInt32(Console.ReadLine());
+            //Loop for each assignment
+            for (int i = 1; i <= q; i++)
+            {
+                Console.WriteLine($"*****Assignment number:{i}*****");
+                assignments.Add(cpUtils4.GetAssignmentDetails());
+            }
+            cpUtils4.PrintAssignmentsList(assignments);
+
 
         }
 
@@ -74,7 +93,7 @@ namespace IndividualProject
         
         */
 
-      
+
 
 
 

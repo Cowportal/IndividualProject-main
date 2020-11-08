@@ -44,6 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\CommandPromptUtils.cs" />
+    <Compile Include="BusinessLogic\CommandPromptUtilsAssignment.cs" />
+    <Compile Include="BusinessLogic\CommandPromptUtilsCourse.cs" />
+    <Compile Include="BusinessLogic\CommandPromptUtilsStudent.cs" />
+    <Compile Include="BusinessLogic\CommandPromptUtilsTrainer.cs" />
+    <Compile Include="Interfaces\iAssignmentActions.cs" />
+    <Compile Include="Interfaces\iCoursesActions.cs" />
+    <Compile Include="Interfaces\iTrainerActions.cs" />
+    <Compile Include="Interfaces\iStudentActions.cs" />
     <Compile Include="Models\Asignment.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
@@ -54,5 +62,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

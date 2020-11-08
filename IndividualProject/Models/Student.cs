@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IndividualProject.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,15 +36,42 @@ namespace IndividualProject.Models
             get { return (this._tuitionFee); }
             set { this._tuitionFee = value; }
         }
-        public override bool Equals(object obj)
+
+
+
+        private protected List<Course> _coursesperstudent;
+
+        public List<Course> CoursesPerStudent
         {
-            return base.Equals(obj);
+            get { return _coursesperstudent; }
+            set { _coursesperstudent = value; }
         }
 
-        public override int GetHashCode()
+
+        public Student()
         {
-            return base.GetHashCode();
+            this._firstname = "JohnDoe";
+            this._lastname = "JohnDoe";
+            this._dateOfBirth = DateTime.Parse("1/1/1901");
+            this._tuitionFee = 000;
+            
         }
+
+        public Student(string firstName, string lastName, DateTime dateOfBirth,
+            double tuitionFee, List<Course> coursesPerStudent)
+        {
+
+        }
+
+        public Student (Course course1, Course course2)
+        {
+            course1.Title = "C";
+            course2.Title = "B";
+            this._coursesperstudent.Add(course1);
+            this._coursesperstudent.Add(course2);
+        }
+        
+        
 
         public override string ToString()
         {

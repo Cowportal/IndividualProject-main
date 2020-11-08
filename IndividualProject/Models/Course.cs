@@ -28,7 +28,7 @@ namespace IndividualProject.Models
         public string Type
         {
             get { return (this._type); }
-            set { this._type = value; }
+            set { this._type = value.ToUpper(); }
         }
         public DateTime StartDate
         {
@@ -39,6 +39,20 @@ namespace IndividualProject.Models
         {
             get { return (this._end_date); }
             set { this._end_date = value; }
+        }
+        public Course()
+        {
+            this._title = "CB XX";
+            this._stream = "Some Programming Language";
+            this._type = "xxFull time/xxPart time";
+            this._start_date = DateTime.Parse("1/1/1901");
+            this._end_date = DateTime.Parse("1/1/1901");
+
+
+        }
+        public override string ToString()
+        {
+            return ($"Course Title: {_title}\tCourse Stream: {_stream}\tCourse Type: {_type}\tCourse starts at: {_start_date}\tCourse ends at: {_end_date}");
         }
     }
 }

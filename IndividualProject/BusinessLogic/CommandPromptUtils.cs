@@ -9,48 +9,10 @@ namespace IndividualProject.BusinessLogic
 {
     class CommandPromptUtils //methods pou mas vohthane na sulleksoume stoixeia mesw cmd
     {
-        public Trainer GetTrainerDetails(List<string> subjects=null)
+       
+        private protected string AskDetail(string message, List<string> subjects = null)//stis parametrous mporw na valw default times, edw evala null giati thelw mono gia to subject na mpei se lista kai oxi sta alla, vazw dhladh null gia na mhn mou xtuphsei se auta pou den einai subject
         {
-            if (subjects == null) subjects = new List<string>() { "C#", "Java", "Python", "JavaScript", "PHP" };
-            Trainer trainer   = new Trainer();
-            trainer.FirstName = AskDetail("Teacher, give me your first name: ");
-            trainer.LastName  = AskDetail("Teacher, give me your last name: ");
-            trainer.Subject   = AskDetail("Teacher, give me the subject you teach: ", subjects);
-            return (trainer);
-        }
-
-        public Student GetStudentDetails()
-        {
-            Student student = new Student();
-            student.FirstName = AskDetail("Student, give me your first name:");
-            student.LastName = AskDetail("Student, give me your last name:");
-            student.DateOfBirth = Convert.ToDateTime(AskDetail("Student, give me your date of birth:"));
-            student.TuitionFee = Convert.ToDouble(AskDetail("Student, what is your tuition fee?"));
-
-            return (student);
-        }
-        public Course GetCourseDetails()
-        {
-            Course course = new Course();
-            course.Title = AskDetail("What is the title of the course?");
-            course.Stream = AskDetail("What is the stream of the course");
-            course.Type = AskDetail("What is the type of the course");
-            course.StartDate = Convert.ToDateTime(AskDetail("What is the Start Date of the course"));
-            course.EndDate = Convert.ToDateTime(AskDetail("What is the End Date of the course"));
-
-            return (course);
-        }
-
-        public Asignment GetAsignmentDetails(List<string> subjects = null)
-        {
-            Asignment asignment= new Asignment();
-
-            return (asignment);
-        }
-
-        private string AskDetail(string message, List<string> subjects = null)//stis parametrous mporw na valw default times, edw evala null giati thelw mono gia to subject na mpei se lista kai oxi sta alla, vazw dhladh null gia na mhn mou xtuphsei se auta pou den einai subject
-        {
-            string result = "";
+            string result ="";
             Console.Write(message);
             if(subjects != null)
             {
@@ -65,7 +27,7 @@ namespace IndividualProject.BusinessLogic
             return (result);
         }
 
-        private string SelectFromListOfStrings(List<string> elements)
+        private protected string SelectFromListOfStrings(List<string> elements)
         {
             string result = "";
             int counter = 1;
@@ -74,30 +36,90 @@ namespace IndividualProject.BusinessLogic
             {
                 Console.WriteLine($"{counter++}. {item}");
             }
-            int choice = Convert.ToInt32(Console.ReadLine());
+            int choice = ConvertToInt(Console.ReadLine());
+            while (choice> elements.Count || choice <= 0)
+            {
+                Console.WriteLine("Incorrect entry, choose a valid list number ONLY: ");
+                choice = ConvertToInt(Console.ReadLine());
+            }
             result = elements.ElementAt(choice - 1); //elements[choice - 1];
             return (result);
         }
-        public void PrintTrainersList(List<Trainer> trainers)
+    
+        public DateTime ConvertToDateTime(string dateValue)
         {
-            foreach (var item in trainers)
+
+            bool isItDate;
+            DateTime date;
+            isItDate = DateTime.TryParse(dateValue, out date);
+
+
+            while (dateValue == null || isItDate == false)
             {
-                Console.WriteLine(item);
+                Console.Write("Please enter a valid date (DD/MM/YYYY): ");
+                dateValue = Console.ReadLine();
+                isItDate = DateTime.TryParse(dateValue, out date);
             }
+            date = DateTime.Parse(dateValue);
+            return (date);
         }
-        public void PrintStudentsList(List<Student> students)
+
+        public double ConvertToDouble(string dValue)
         {
-            foreach (var item in students)
+
+            bool isItDouble;
+            double d1;
+            isItDouble = double.TryParse(dValue, out d1);
+
+
+            while (dValue == null || isItDouble == false)
             {
-                Console.WriteLine(item);
+                Console.Write("Please enter a valid double value");
+                dValue = Console.ReadLine();
+                isItDouble = double.TryParse(dValue, out d1);
             }
+            d1 = double.Parse(dValue);
+            return (d1);
         }
-        public void PrintCoursesList(List<Course> courses)
+        public int ConvertToInt(string intValue)
         {
-            foreach (var item in courses)
+
+            bool isItInt;
+            int i1;
+            isItInt = int.TryParse(intValue, out i1);
+
+
+            while (intValue == null || isItInt == false)
             {
-                Console.WriteLine(item);
+                Console.Write("Please enter a valid number choice number");
+                intValue = Console.ReadLine();
+                isItInt = int.TryParse(intValue, out i1);
             }
+            i1 = int.Parse(intValue);
+            return (i1);
+        }
+
+        public float ConvertToFloat(string fValue)
+        {
+
+            bool isItFloat;
+            float f1;
+            isItFloat = float.TryParse(fValue, out f1);
+
+
+            while (fValue == null || isItFloat == false)
+            {
+                Console.Write("Please enter a valid float value");
+                fValue = Console.ReadLine();
+                isItFloat = float.TryParse(fValue, out f1);
+            }
+            f1 = float.Parse(fValue);
+            return (f1);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
