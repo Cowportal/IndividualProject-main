@@ -15,7 +15,7 @@ namespace IndividualProject.Models
             student.FirstName = AskDetail("Student, give me your first name:");
             student.LastName = AskDetail("Student, give me your last name:");
             student.DateOfBirth = ConvertToDateTime($"{AskDetail("Student, give me your date of birth:")}");
-            student.TuitionFee = ConvertToDouble($"{AskDetail("Student, what is your tuition fee?")}");
+            student.TuitionFee = ConvertToDouble($"{AskDetail("Student, give me your tuition fee: ")}");
 
             return (student);
         }

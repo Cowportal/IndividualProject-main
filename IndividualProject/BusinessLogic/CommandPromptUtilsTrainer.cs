@@ -9,9 +9,9 @@ namespace IndividualProject.Models
 {
     class CommandPromptUtilsTrainer:CommandPromptUtils
     {
-        public Trainer GetTrainerDetails(List<string> subjects = null)
+        public Trainer GetTrainerDetails()
         {
-            if (subjects == null) subjects = new List<string>() { "C#", "Java", "Python", "JavaScript", "PHP" };
+            List<string> subjects = new List<string>() { "C#", "Java", "Python", "JavaScript", "PHP" };
             Trainer trainer = new Trainer();
             trainer.FirstName = AskDetail("Teacher, give me your first name: ");
             trainer.LastName = AskDetail("Teacher, give me your last name: ");

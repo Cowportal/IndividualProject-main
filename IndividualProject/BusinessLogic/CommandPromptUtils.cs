@@ -91,7 +91,7 @@ namespace IndividualProject.BusinessLogic
 
             while (intValue == null || isItInt == false)
             {
-                Console.Write("Please enter a valid number choice number");
+                Console.Write("Please enter a valid number choice");
                 intValue = Console.ReadLine();
                 isItInt = int.TryParse(intValue, out i1);
             }
@@ -123,4 +123,3 @@ namespace IndividualProject.BusinessLogic
         }
     }
 }
-//xrhsimpoihse thn AskDetail kai selectfromlistofstrings gia na kanw to course type (full time part time hybrid etc)

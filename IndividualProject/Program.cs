@@ -17,13 +17,15 @@ namespace IndividualProject
             CommandPromptUtilsStudent cpUtils2 = new CommandPromptUtilsStudent();
             CommandPromptUtilsCourse cpUtils3 = new CommandPromptUtilsCourse();
             CommandPromptUtilsAssignment cpUtils4 = new CommandPromptUtilsAssignment();
+            CommandPromptUtils cpUtils0 = new CommandPromptUtils();
 
             
             List<Trainer> trainers = new List<Trainer>();
             //Ask number of trainers
             Console.WriteLine("Give me number of trainers");
-            int x = Convert.ToInt32(Console.ReadLine());
-            //Loop for each trainer
+            int x = cpUtils0.ConvertToInt(Console.ReadLine());
+            //Loop for each trainer 
+            // Kalw thn convert thn dikia mou apo to vasiko CommandPromptUtils gia na apofugw exception
             for (int i = 1; i <= x; i++)
             {
                 Console.WriteLine($"*****Teacher number:{i}*****");
@@ -36,7 +38,7 @@ namespace IndividualProject
             List<Student> students = new List<Student>();
             //Ask number of students
             Console.WriteLine("Give me number of students");
-            int y = Convert.ToInt32(Console.ReadLine());
+            int y = cpUtils0.ConvertToInt(Console.ReadLine());
             //Loop for each student
             for (int i = 1; i <= y; i++)
             {
@@ -48,7 +50,7 @@ namespace IndividualProject
             List<Course> courses = new List<Course>();
             //Ask number of courses
             Console.WriteLine("Give me number of courses");
-            int z = Convert.ToInt32(Console.ReadLine());
+            int z = cpUtils0.ConvertToInt(Console.ReadLine());
             //Loop for each course
             for (int i = 1; i <= z; i++)
             {
@@ -60,7 +62,7 @@ namespace IndividualProject
             List<Assignment> assignments = new List<Assignment>();
             //Ask number of assignments
             Console.WriteLine("Give me number of assignments");
-            int q = Convert.ToInt32(Console.ReadLine());
+            int q = cpUtils0.ConvertToInt(Console.ReadLine());
             //Loop for each assignment
             for (int i = 1; i <= q; i++)
             {
