@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IndividualProject.Interfaces
+namespace IndividualProject.Interfaces.Models
 {
     interface iCoursesActions
     {
-
+        void PrintStudentsInACourse(); 
+     
     }
 }

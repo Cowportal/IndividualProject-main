@@ -74,7 +74,7 @@ namespace IndividualProject.BusinessLogic
 
             while (dValue == null || isItDouble == false)
             {
-                Console.Write("Please enter a valid double value");
+                Console.Write("Please enter a valid double value: ");
                 dValue = Console.ReadLine();
                 isItDouble = double.TryParse(dValue, out d1);
             }
@@ -91,7 +91,7 @@ namespace IndividualProject.BusinessLogic
 
             while (intValue == null || isItInt == false)
             {
-                Console.Write("Please enter a valid number choice");
+                Console.Write("Please enter a valid number choice: ");
                 intValue = Console.ReadLine();
                 isItInt = int.TryParse(intValue, out i1);
             }
@@ -109,7 +109,7 @@ namespace IndividualProject.BusinessLogic
 
             while (fValue == null || isItFloat == false)
             {
-                Console.Write("Please enter a valid float value");
+                Console.Write("Please enter a valid float value: ");
                 fValue = Console.ReadLine();
                 isItFloat = float.TryParse(fValue, out f1);
             }
@@ -120,6 +120,25 @@ namespace IndividualProject.BusinessLogic
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        private protected Course SelectFromListOfCourses(List<Course> courses)
+        {
+            Course result;
+            int counter = 1;
+            Console.WriteLine();
+            foreach (var item in courses) 
+            {
+                Console.WriteLine($"{counter++}. {item}");
+            }
+            int choice = ConvertToInt(Console.ReadLine());
+            while (choice > courses.Count || choice <= 0)
+            {
+                Console.WriteLine("Incorrect entry, choose a valid list number ONLY: ");
+                choice = ConvertToInt(Console.ReadLine());
+            }
+            result = courses.ElementAt(choice - 1); 
+            return (result);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace IndividualProject.Models
         private string _lastname;
         private DateTime _dateOfBirth;
         private double _tuitionFee;
+        private string _courseChoices;
+        private List<string> _coursesPerStudent;
 
         public string FirstName
         {
@@ -36,15 +38,17 @@ namespace IndividualProject.Models
             get { return (this._tuitionFee); }
             set { this._tuitionFee = value; }
         }
-
-
-
-        private protected List<Course> _coursesperstudent;
-
-        public List<Course> CoursesPerStudent
+        
+        public string CourseChoices
         {
-            get { return _coursesperstudent; }
-            set { _coursesperstudent = value; }
+            get { return (this._courseChoices); }
+            set { this._courseChoices = value; }
+        }
+
+        public List<string> CoursesPerStudent
+        {
+            get { return (this._coursesPerStudent); }
+            set { this._coursesPerStudent = value; }
         }
 
 
@@ -54,25 +58,14 @@ namespace IndividualProject.Models
             this._lastname = "JohnDoe";
             this._dateOfBirth = DateTime.Parse("1/1/1901");
             this._tuitionFee = 000;
+            List<string> courses = new List<string>();
+            courses.Add("Course Title");
+            this._coursesPerStudent = courses;
             
         }
 
-        public Student(string firstName, string lastName, DateTime dateOfBirth,
-            double tuitionFee, List<Course> coursesPerStudent)
-        {
-
-        }
-
-        public Student (Course course1, Course course2)
-        {
-            course1.Title = "C";
-            course2.Title = "B";
-            this._coursesperstudent.Add(course1);
-            this._coursesperstudent.Add(course2);
-        }
         
-        
-
+      
         public override string ToString()
         {
             return ($"First Name: {_firstname}\tLast Name: {_lastname}\tDate of Birth: {_dateOfBirth}\tTuition Fee: {_tuitionFee}");

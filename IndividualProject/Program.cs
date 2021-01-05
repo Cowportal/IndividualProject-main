@@ -19,34 +19,7 @@ namespace IndividualProject
             CommandPromptUtilsAssignment cpUtils4 = new CommandPromptUtilsAssignment();
             CommandPromptUtils cpUtils0 = new CommandPromptUtils();
 
-            
-            List<Trainer> trainers = new List<Trainer>();
-            //Ask number of trainers
-            Console.WriteLine("Give me number of trainers");
-            int x = cpUtils0.ConvertToInt(Console.ReadLine());
-            //Loop for each trainer 
-            // Kalw thn convert thn dikia mou apo to vasiko CommandPromptUtils gia na apofugw exception
-            for (int i = 1; i <= x; i++)
-            {
-                Console.WriteLine($"*****Teacher number:{i}*****");
-                trainers.Add(cpUtils1.GetTrainerDetails());
-                
-            }
-
-            cpUtils1.PrintTrainersList(trainers);
-
-            List<Student> students = new List<Student>();
-            //Ask number of students
-            Console.WriteLine("Give me number of students");
-            int y = cpUtils0.ConvertToInt(Console.ReadLine());
-            //Loop for each student
-            for (int i = 1; i <= y; i++)
-            {
-                Console.WriteLine($"*****Student number:{i}*****");
-                students.Add(cpUtils2.GetStudentDetails());
-            }
-            cpUtils2.PrintStudentsList(students);
-
+            //prwta ftiaxnw ta courses mou
             List<Course> courses = new List<Course>();
             //Ask number of courses
             Console.WriteLine("Give me number of courses");
@@ -59,6 +32,36 @@ namespace IndividualProject
             }
             cpUtils3.PrintCoursesList(courses);
 
+
+            List<Trainer> trainers = new List<Trainer>();
+            //Ask number of trainers
+            Console.WriteLine("Give me number of trainers");
+            int x = cpUtils0.ConvertToInt(Console.ReadLine());
+            //Loop for each trainer 
+            // Kalw thn convert thn dikia mou apo to vasiko CommandPromptUtils gia na apofugw exception
+            for (int i = 1; i <= x; i++)
+            {
+                Console.WriteLine($"*****Teacher number:{i}*****");
+                trainers.Add(cpUtils1.GetTrainerDetails(courses));
+
+            }
+
+            cpUtils1.PrintTrainersList(trainers);
+
+
+            List<Student> students = new List<Student>();
+            //Ask number of students
+            Console.WriteLine("Give me number of students");
+            int y = cpUtils0.ConvertToInt(Console.ReadLine());
+            //Loop for each student
+            for (int i = 1; i <= y; i++)
+            {
+                Console.WriteLine($"*****Student number:{i}*****");
+                students.Add(cpUtils2.GetStudentDetails(courses));
+            }
+            cpUtils2.PrintStudentsList(students);
+
+
             List<Assignment> assignments = new List<Assignment>();
             //Ask number of assignments
             Console.WriteLine("Give me number of assignments");
@@ -67,33 +70,19 @@ namespace IndividualProject
             for (int i = 1; i <= q; i++)
             {
                 Console.WriteLine($"*****Assignment number:{i}*****");
-                assignments.Add(cpUtils4.GetAssignmentDetails());
+                assignments.Add(cpUtils4.GetAssignmentDetails(courses));
             }
             cpUtils4.PrintAssignmentsList(assignments);
+
+            cpUtils3.PrintStudentsInACourse(students, courses);
+            cpUtils3.PrintTrainersInACourse(trainers, courses);
+            cpUtils3.PrintAssignmentsInACourse(assignments, courses);
+            cpUtils4.PrintAssignmentsPerStudent(assignments, courses ,students);
 
 
         }
 
-        /*
-         * 
-         * modelopoihsh
-         * List<Student>
-        List <Trainer>
-        List <Assignment>
-        List<Course>
-        
-        CB12
-        Full Time / Part Time
-        C# / Java / Javascript
-
-        CB12 Java Full Time
-        CB12 
-        
-        
-        
-        
-        
-        */
+       
 
 
 
@@ -101,21 +90,6 @@ namespace IndividualProject
 
 
 
-
-
-        //--------------------------------------------------
-        //Trainer trainer =  cpUtils.GetTrainerDetails();
-        //Console.WriteLine(trainer);
-        //Trainer trainer2 = cpUtils.GetTrainerDetails();
-        //Console.WriteLine(trainer2);
-        //trainers.Add(cpUtils.GetTrainerDetails());
-        //trainers.Add(cpUtils.GetTrainerDetails());
-        //--------------------------------------------------
-
-
-
-        // Create appropriate methods in order to ask 
-        // from the user data for the four main classes
 
 
 

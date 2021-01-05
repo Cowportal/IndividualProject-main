@@ -13,6 +13,8 @@ namespace IndividualProject.Models
         private DateTime _deadlinedatetime;
         private float _oralmark;
         private float _totalmark;
+        private string _courseChoices;
+        private List<string> _coursesPerAssignment;
 
         public string Title
         {
@@ -41,6 +43,29 @@ namespace IndividualProject.Models
         {
             get { return (this._totalmark); }
             set { this._totalmark = value; }
+        }
+        public string CourseChoices
+        {
+            get { return (this._courseChoices); }
+            set { this._courseChoices = value; }
+        }
+
+        public List<string> CoursesPerAssignment
+        {
+            get { return (this._coursesPerAssignment); }
+            set { this._coursesPerAssignment = value; }
+        }
+        public Assignment()
+        {
+            this._title = "generic title";
+            this._description = "generic description";
+            this._deadlinedatetime = DateTime.Parse("1/1/1901");
+            this._oralmark = 00;
+            this._totalmark = 00;
+            List<string> courses = new List<string>();
+            courses.Add("Course Title");
+            this._coursesPerAssignment = courses;
+
         }
 
         public override string ToString()
